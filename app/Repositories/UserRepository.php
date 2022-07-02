@@ -17,4 +17,25 @@ class UserRepository {
 
     return $user;
   }
+
+  public function show($id)
+  {
+    $user = User::where('id', $id);
+    $user = $user->firstOrFail();
+    return $user;
+  }
+
+  public function update($data, $id)
+  {
+    $user = User::where('id', $id)->first();
+    $user->fill($data);
+    $user->save();
+    return $user;
+  }
+
+  public function destroy($id)
+  {
+    $user = User::where('id', $id)->first();
+    $user->delete();
+  }
 }

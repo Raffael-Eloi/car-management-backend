@@ -23,4 +23,18 @@ class UserService {
     return $this->userRepository->create($request);
   }
 
+  public function getById($id)
+  {
+    return $this->userRepository->show($id);
+  }
+
+  public function updateUser($request, $id)
+  {
+    return $this->userRepository->update($request, $id);
+  }
+
+  public function destroyUser($id)
+  {
+    return $this->userRepository->destroy($id);
+  }
 }
