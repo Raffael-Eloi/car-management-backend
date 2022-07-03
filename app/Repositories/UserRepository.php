@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Models\User;
 
 class UserRepository {
+  
   public function get()
   {
     return User::where('active', true)->get();
@@ -13,6 +14,7 @@ class UserRepository {
   {
     $user = new User();
     $user->fill($data);
+    $user->password = bcrypt($data['password']);
     $user->save();
 
     return $user;

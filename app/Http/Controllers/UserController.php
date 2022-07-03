@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Services\UserService;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -13,6 +12,7 @@ class UserController extends Controller
 
     public function __construct(UserService $userService) {
         $this->userService = $userService;
+        $this->middleware('auth:api');
     }
 
     public function index()
