@@ -29,11 +29,11 @@ class VehicleStoreRequest extends FormRequest
             'license_plate'       => 'required|string|min:4|max:255',
             'year_model'          => 'required|string|min:4|max:255',
             'color'               => 'required|string|min:4|max:255',
-            'axle_quantity'       => 'required',
-            'torque'              => 'required',
-            'gearbox_id'          => 'required',
-            'relation_first_gear' => 'required',
-            'axle_differential'   => 'required',
+            'axle_quantity'       => 'required|numeric',
+            'torque'              => 'required|numeric',
+            'gearbox_id'          => 'required|numeric',
+            'relation_first_gear' => 'required|numeric',
+            'axle_differential'   => 'required|numeric',
         ];
     }
 
@@ -61,10 +61,15 @@ class VehicleStoreRequest extends FormRequest
             'color.min'                    => 'O campo cor deve ter no mínimo 4 caracteres',
             'color.max'                    => 'O campo cor deve ter no máximo 255 caracteres',
             'axle_quantity.required'       => 'O campo quantidade de eixos é obrigatório',
+            'axle_quantity.numeric'        => 'O campo quantidade de eixos deve ser do tipo número',
             'torque.required'              => 'O campo torque é obrigatório',
+            'torque.numeric'               => 'O campo torque deve ser do tipo número',
             'gearbox_id.required'          => 'O campo caixa de marchas é obrigatório',
+            'gearbox_id.numeric'           => 'O campo caixa de marchas deve ser do tipo número',
             'relation_first_gear.required' => 'O campo relação primeira marcha é obrigatório',
+            'relation_first_gear.numeric'  => 'O campo relação primeira marcha deve ser do tipo número',
             'axle_differential.required'   => 'O campo relação diferencial é obrigatório',
+            'axle_differential.numeric'    => 'O campo relação diferencial deve ser do tipo número',
         ];
     }
 }
