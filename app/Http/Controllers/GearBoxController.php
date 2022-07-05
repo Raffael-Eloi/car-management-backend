@@ -12,6 +12,7 @@ class GearBoxController extends Controller
 
     public function __construct(GearBoxService $gearBoxService) {
         $this->gearBoxService = $gearBoxService;
+        $this->middleware('auth:api');
     }
 
     public function index()
@@ -21,7 +22,7 @@ class GearBoxController extends Controller
 
     public function store(GearBoxStoreRequest $request)
     {
-        return response()->json($this->gearBoxService->storeGearBox($request->validate()), 201);
+        return response()->json($this->gearBoxService->storeGearBox($request->validated()), 201);
     }
 
     public function show($id)

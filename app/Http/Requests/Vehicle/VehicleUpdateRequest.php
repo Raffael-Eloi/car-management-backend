@@ -29,6 +29,11 @@ class VehicleUpdateRequest extends FormRequest
             'license_plate'       => 'string|min:4|max:255',
             'year_model'          => 'string|min:4|max:255',
             'color'               => 'string|min:4|max:255',
+            'axle_quantity'       => 'string',
+            'torque'              => 'string',
+            'gearbox_id'          => 'string',
+            'relation_first_gear' => 'string',
+            'axle_differential'   => 'string',
         ];
     }
 

@@ -33,6 +33,6 @@ class Vehicle extends Model
 
     public function gearboxes()
     {
-        return $this->hasOne(GearBox::class);
+        return $this->belongsTo(GearBox::class);
     }
 }

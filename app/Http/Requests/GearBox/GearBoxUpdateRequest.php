@@ -13,7 +13,7 @@ class GearBoxUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,22 @@ class GearBoxUpdateRequest extends FormRequest
     {
         return [
             'name' => 'string|min:4|max:255',
+            'gear_1'     => 'string',
+            'gear_2'     => 'string',
+            'gear_3'     => 'string',
+            'gear_4'     => 'string',
+            'gear_5'     => 'string',
+            'gear_6'     => 'string',
+            'gear_7'     => 'string',
+            'gear_8'     => 'string',
+            'gear_9'     => 'string',
+            'gear_10'    => 'string',
+            'gear_11'    => 'string',
+            'gear_12'    => 'string',
+            'gear_13'    => 'string',
+            'gear_14'    => 'string',
+            'gear_15'    => 'string',
+            'gear_16'    => 'string',
         ];
     }
 

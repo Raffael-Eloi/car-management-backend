@@ -12,6 +12,7 @@ class CustomerController extends Controller
 
     public function __construct(CustomerService $customerService) {
         $this->customerService = $customerService;
+        $this->middleware('auth:api');
     }
 
     public function index()
@@ -21,7 +22,7 @@ class CustomerController extends Controller
 
     public function store(CustomerStoreRequest $request)
     {
-        return response()->json($this->customerService->storeCustomer($request->validate()), 201);
+        return response()->json($this->customerService->storeCustomer($request->validated()), 201);
     }
 
     public function show($id)
