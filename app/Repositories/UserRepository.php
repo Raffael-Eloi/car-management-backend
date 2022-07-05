@@ -23,7 +23,7 @@ class UserRepository {
   public function show($id)
   {
     $user = User::where('id', $id);
-    $user = $user->firstOrFail();
+    $user = $user->first();
     return $user;
   }
 
