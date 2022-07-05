@@ -2,39 +2,39 @@
 
 namespace App\Services;
 
-use App\Repositories\UserRepository;
+use App\Repositories\CustomerRepository;
 
 class CustomerService {
 
-  protected $userRepository;
+  protected $customerRepository;
 
-  public function __construct(UserRepository $userRepository)
+  public function __construct(CustomerRepository $customerRepository)
   {
-    $this->userRepository = $userRepository;
+    $this->customerRepository = $customerRepository;
   }
 
   public function getAllCustomers() 
   {
-    return $this->userRepository->get();
+    return $this->customerRepository->get();
   }
 
   public function storeCustomer($request)
   {
-    return $this->userRepository->create($request);
+    return $this->customerRepository->create($request);
   }
 
   public function getById($id)
   {
-    return $this->userRepository->show($id);
+    return $this->customerRepository->show($id);
   }
 
   public function updateCustomer($request, $id)
   {
-    return $this->userRepository->update($request, $id);
+    return $this->customerRepository->update($request, $id);
   }
 
-  public function destroyCustomer($id)
+  public function deleteCustomer($id)
   {
-    return $this->userRepository->destroy($id);
+    return $this->customerRepository->destroy($id);
   }
 }
