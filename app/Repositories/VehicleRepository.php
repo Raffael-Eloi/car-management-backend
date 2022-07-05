@@ -22,14 +22,14 @@ class VehicleRepository {
 
   public function show($id)
   {
-    $vehicle = Vehicle::where('id', $id);
+    $vehicle = Vehicle::findOrFail($id);
     $vehicle = $vehicle->first();
     return $vehicle;
   }
 
   public function update($data, $id)
   {
-    $vehicle = Vehicle::where('id', $id)->first();
+    $vehicle = Vehicle::findOrFail($id);
     $vehicle->fill($data);
     $vehicle->save();
     return $vehicle;
@@ -37,7 +37,7 @@ class VehicleRepository {
 
   public function destroy($id)
   {
-    $vehicle = Vehicle::where('id', $id)->first();
+    $vehicle = Vehicle::findOrFail($id);
     $vehicle->delete();
   }
 }

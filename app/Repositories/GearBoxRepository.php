@@ -21,14 +21,14 @@ class GearBoxRepository {
 
   public function show($id)
   {
-    $gearBox = GearBox::where('id', $id);
+    $gearBox = GearBox::findOrFail($id);
     $gearBox = $gearBox->first();
     return $gearBox;
   }
 
   public function update($data, $id)
   {
-    $gearBox = GearBox::where('id', $id)->first();
+    $gearBox = GearBox::findOrFail($id);
     $gearBox->fill($data);
     $gearBox->save();
     return $gearBox;
@@ -36,7 +36,7 @@ class GearBoxRepository {
 
   public function destroy($id)
   {
-    $gearBox = GearBox::where('id', $id)->first();
+    $gearBox = GearBox::findOrFail($id);
     $gearBox->delete();
   }
 }

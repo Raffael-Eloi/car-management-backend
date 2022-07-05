@@ -21,14 +21,14 @@ class CustomerRepository {
 
   public function show($id)
   {
-    $customer = Customer::where('id', $id);
+    $customer = Customer::findOrFail($id);
     $customer = $customer->first();
     return $customer;
   }
 
   public function update($data, $id)
   {
-    $customer = Customer::where('id', $id)->first();
+    $customer = Customer::findOrFail($id);
     $customer->fill($data);
     $customer->save();
     return $customer;
@@ -36,7 +36,7 @@ class CustomerRepository {
 
   public function destroy($id)
   {
-    $customer = Customer::where('id', $id)->first();
+    $customer = Customer::findOrFail($id);
     $customer->delete();
   }
 }

@@ -22,14 +22,14 @@ class UserRepository {
 
   public function show($id)
   {
-    $user = User::where('id', $id);
+    $user = User::findOrFail($id);
     $user = $user->first();
     return $user;
   }
 
   public function update($data, $id)
   {
-    $user = User::where('id', $id)->first();
+    $user = User::findOrFail($id);
     $user->fill($data);
     $user->save();
     return $user;
@@ -37,7 +37,7 @@ class UserRepository {
 
   public function destroy($id)
   {
-    $user = User::where('id', $id)->first();
+    $user = User::findOrFail($id);
     $user->delete();
   }
 }
