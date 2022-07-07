@@ -27,11 +27,11 @@ class UserStoreRequest extends FormRequest
             'name'     => 'required|string|min:4|max:255', 
             'document' => 'required', 
             'phone'    => 'required',
-            'address'  => 'required',  
+            'address'  => 'required|string',  
             'city'     => 'required|string', 
             'state'    => 'required|string', 
             'email'    => 'required|string', 
-            'password' => 'required', 
+            'password' => 'required|min:6', 
         ];
     }
 
@@ -40,18 +40,20 @@ class UserStoreRequest extends FormRequest
         return [
             'name.required'     => 'O campo nome é obrigatório', 
             'name.string'       => 'O campo nome deve ser do tipo texto', 
-            'name.min'          => 'O campo nome deve ter no máximo 4 caracteres', 
+            'name.min'          => 'O campo nome deve ter no mínimo 4 caracteres', 
             'name.max'          => 'O campo nome deve ter no máximo 255 caracteres', 
             'document.required' => 'O campo documento é obrigatório', 
             'phone.required'    => 'O campo telefone é obrigatório',
             'address.required'  => 'O campo endereço é obrigatório',  
+            'address.string'    => 'O campo endereço deve ser do tipo texto',  
             'city.required'     => 'O campo cidade é obrigatório', 
             'city.string'       => 'O campo cidade deve ser do tipo texto', 
             'state.required'    => 'O campo estado é obrigatório', 
             'state.string'      => 'O campo estado deve ser do tipo texto', 
             'email.required'    => 'O campo email é obrigatório', 
-            'email.string'      => 'O campo email deve ser do tipo texto', 
+            'email.string'      => 'O campo email deve ser do tipo texto',
             'password.required' => 'O campo senha é obrigatório', 
+            'password.min'      => 'O campo senha deve ter no mínimo 6 caracteres', 
         ];
     }
 }
