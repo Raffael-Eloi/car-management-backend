@@ -40,4 +40,11 @@ class UserRepository {
     $user = User::findOrFail($id);
     $user->delete();
   }
+
+  public function disable($id)
+  {
+    $user = User::findOrFail($id);
+    $user->active = false;
+    $user->save();
+  }
 }

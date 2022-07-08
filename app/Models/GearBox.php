@@ -21,8 +21,8 @@ class GearBox extends Model
      */
     protected $fillable = [
         'name',
-        'CL',
-        'CR',
+        'cl',
+        'cr',
         'gear_1',
         'gear_2',
         'gear_3',

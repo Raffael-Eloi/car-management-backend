@@ -37,4 +37,9 @@ class UserService {
   {
     return $this->userRepository->destroy($id);
   }
+
+  public function disableUser($id)
+  {
+    return $this->userRepository->disable($id);
+  }
 }

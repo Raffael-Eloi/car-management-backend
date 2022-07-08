@@ -25,6 +25,8 @@ class GearBoxStoreRequest extends FormRequest
     {
         return [
             'name'       => 'required|string|min:4|max:255',
+            'cl'         => 'numeric',
+            'cr'         => 'numeric',
             'gear_1'     => 'required|numeric',
             'gear_2'     => 'required|numeric',
             'gear_3'     => 'required|numeric',
@@ -49,12 +51,14 @@ class GearBoxStoreRequest extends FormRequest
         return [
             'name.required'      => 'O campo nome é obrigatório', 
             'name.string'        => 'O campo nome deve ser do tipo texto', 
-            'name.min'           => 'O campo nome deve ter no máximo 4 caracteres', 
+            'name.min'           => 'O campo nome deve ter no mínimo 4 caracteres', 
             'name.max'           => 'O campo nome deve ter no máximo 255 caracteres', 
-            'gear_1.required'    => 'O campo marcha 1 deve ser do tipo número', 
-            'gear_2.required'    => 'O campo marcha 2 deve ser do tipo número',
-            'gear_3.required'    => 'O campo marcha 3 deve ser do tipo número',  
-            'gear_4.required'    => 'O campo marcha 4 deve ser do tipo número', 
+            'cl.max'             => 'O campo CL deve ser do tipo número', 
+            'cr.max'             => 'O campo CR deve ser do tipo número', 
+            'gear_1.required'    => 'O campo marcha 1 é obrigatório', 
+            'gear_2.required'    => 'O campo marcha 2 é obrigatório',
+            'gear_3.required'    => 'O campo marcha 3 é obrigatório',  
+            'gear_4.required'    => 'O campo marcha 4 é obrigatório', 
             'gear_1.numeric'     => 'O campo marcha 1 deve ser do tipo número', 
             'gear_2.numeric'     => 'O campo marcha 2 deve ser do tipo número', 
             'gear_3.numeric'     => 'O campo marcha 3 deve ser do tipo número', 
