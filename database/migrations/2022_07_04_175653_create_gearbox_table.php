@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('gearboxes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->float('CL')->nullable();
-            $table->float('CR')->nullable();
+            $table->float('cl')->nullable();
+            $table->float('cr')->nullable();
             $table->float('gear_1');
             $table->float('gear_2');
             $table->float('gear_3');
