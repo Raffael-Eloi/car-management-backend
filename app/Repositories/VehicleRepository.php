@@ -7,7 +7,6 @@ class VehicleRepository {
   public function get()
   {
     $vehicles = new Vehicle();
-    $vehicles = $vehicles->with('gearboxes');
     $vehicles = $vehicles->get();
     return $vehicles;
   }

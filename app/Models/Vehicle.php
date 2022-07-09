@@ -14,6 +14,13 @@ class Vehicle extends Model
     protected $table = 'vehicles';
 
     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['gearbox'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -31,7 +38,7 @@ class Vehicle extends Model
         'axle_differential'
     ];
 
-    public function gearboxes()
+    public function gearbox()
     {
         return $this->belongsTo(GearBox::class);
     }
