@@ -15,13 +15,6 @@ class GearBox extends Model
     protected $table = 'gearboxes';
 
     /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
-    protected $with = ['vehicle'];
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -47,9 +40,4 @@ class GearBox extends Model
         'gear_15',
         'gear_16'
     ];
-
-    public function vehicle()
-    {
-        return $this->hasMany(Vehicle::class, 'gearbox_id');
-    }
 }
