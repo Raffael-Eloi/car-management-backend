@@ -23,9 +23,18 @@ return new class extends Migration
             $table->string('axle_quantity');
             $table->string('torque');
             $table->unsignedBigInteger('gearbox_id');
+            $table->unsignedBigInteger('owner_id');
             $table->float('relation_first_gear');
             $table->float('axle_differential');
+            $table->float('weight');
+            $table->float('potency')->nullable();
+            $table->float('front_balance')->nullable();
+            $table->float('back_balance')->nullable();
+            $table->float('between_axles_first')->nullable();
+            $table->float('between_axles_second')->nullable();
+            $table->float('between_axles_third')->nullable();
             $table->foreign('gearbox_id')->references('id')->on('gearboxes')->onUpdate('restrict')->onDelete('restrict');
+            $table->foreign('owner_id')->references('id')->on('owner')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }

@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->boolean('active')->default(true);
             $table->string('name');
-            $table->string('document');
+            $table->string('document')->nullable();
             $table->string('phone')->nullable();
+            $table->string('social_contract')->nullable();
+            $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
