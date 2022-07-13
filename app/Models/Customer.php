@@ -27,5 +27,7 @@ class Customer extends Model
         'city',
         'state',
         'email',
+        'social_contract',
+        'contact',
     ];
 }
