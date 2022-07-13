@@ -16,7 +16,6 @@ class OwnerRepository {
   {
     $owner = new Owner();
     $owner->fill($data);
-    $owner->password = bcrypt($data['password']);
     $owner->save();
 
     return $owner;

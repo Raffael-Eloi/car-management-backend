@@ -39,7 +39,7 @@ class CustomerStoreRequest extends FormRequest
         return [
             'name.required'     => 'O campo nome é obrigatório', 
             'name.string'       => 'O campo nome deve ser do tipo texto', 
-            'name.min'          => 'O campo nome deve ter no máximo 4 caracteres', 
+            'name.min'          => 'O campo nome deve ter no mínimo 4 caracteres', 
             'name.max'          => 'O campo nome deve ter no máximo 255 caracteres', 
             'document.required' => 'O campo documento é obrigatório', 
             'phone.required'    => 'O campo telefone é obrigatório',

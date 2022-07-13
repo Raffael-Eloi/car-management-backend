@@ -45,4 +45,3 @@ class Owner extends Model
         'password_pe',
     ];
 }
-

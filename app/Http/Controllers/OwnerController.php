@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Owner\OwnerStoreRequest;
+use App\Http\Requests\Owner\OwnerUpdateRequest;
 use App\Services\OwnerService;
 
 class OwnerController extends Controller
@@ -10,6 +12,7 @@ class OwnerController extends Controller
 
     public function __construct(OwnerService $ownerService) {
         $this->ownerService = $ownerService;
+        // $this->middleware('auth:api');
     }
 
     public function index()
@@ -17,7 +20,7 @@ class OwnerController extends Controller
         return response()->json($this->ownerService->getAllOwners());
     }
 
-    public function store(UserStoreRequest $request)
+    public function store(OwnerStoreRequest $request)
     {
         return response()->json($this->ownerService->storeOwner($request->validated()),201);
     }
@@ -27,7 +30,7 @@ class OwnerController extends Controller
         return response()->json($this->ownerService->getById($id));
     }
 
-    public function update(UserUpdateRequest $request, $id)
+    public function update(OwnerUpdateRequest $request, $id)
     {
         return response()->json($this->ownerService->updateOwner($request->validated(), $id), 200);
     }
