@@ -18,7 +18,7 @@ class Vehicle extends Model
      *
      * @var array
      */
-    protected $with = ['gearbox'];
+    protected $with = ['gearbox', 'owner'];
 
     /**
      * The attributes that are mass assignable.
@@ -34,12 +34,25 @@ class Vehicle extends Model
         'axle_quantity',
         'torque',
         'gearbox_id',
+        'owner_id',
         'relation_first_gear',
-        'axle_differential'
+        'axle_differential',
+        'weight',
+        'potency',
+        'front_balance',
+        'back_balance',
+        'between_axles_first',
+        'between_axles_second',
+        'between_axles_third',
     ];
 
     public function gearbox()
     {
         return $this->belongsTo(GearBox::class);
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
     }
 }

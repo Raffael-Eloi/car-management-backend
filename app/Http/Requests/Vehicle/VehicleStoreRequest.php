@@ -24,16 +24,24 @@ class VehicleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'brand'               => 'required|string|min:4|max:255',
-            'model'               => 'required|string|min:4|max:255',
-            'license_plate'       => 'required|string|min:4|max:255',
-            'year_model'          => 'required|string|min:4|max:255',
-            'color'               => 'required|string|min:4|max:255',
-            'axle_quantity'       => 'required|numeric',
-            'torque'              => 'required|numeric',
-            'gearbox_id'          => 'required|numeric',
-            'relation_first_gear' => 'required|numeric',
-            'axle_differential'   => 'required|numeric',
+            'brand'                => 'required|string|min:4|max:255',
+            'model'                => 'required|string|min:4|max:255',
+            'license_plate'        => 'required|string|min:4|max:255',
+            'year_model'           => 'required|string|min:4|max:255',
+            'color'                => 'required|string|min:4|max:255',
+            'axle_quantity'        => 'numeric',
+            'torque'               => 'numeric',
+            'gearbox_id'           => 'numeric',
+            'owner_id'             => 'required|numeric',
+            'relation_first_gear'  => 'numeric',
+            'axle_differential'    => 'numeric',
+            'weight'               => 'numeric',
+            'potency'              => 'numeric',
+            'front_balance'        => 'numeric',
+            'back_balance'         => 'numeric',
+            'between_axles_first'  => 'numeric',
+            'between_axles_second' => 'numeric',
+            'between_axles_third'  => 'numeric',
         ];
     }
 
@@ -60,16 +68,21 @@ class VehicleStoreRequest extends FormRequest
             'color.string'                 => 'O campo cor deve ser do tipo texto',
             'color.min'                    => 'O campo cor deve ter no mínimo 4 caracteres',
             'color.max'                    => 'O campo cor deve ter no máximo 255 caracteres',
-            'axle_quantity.required'       => 'O campo quantidade de eixos é obrigatório',
             'axle_quantity.numeric'        => 'O campo quantidade de eixos deve ser do tipo número',
-            'torque.required'              => 'O campo torque é obrigatório',
             'torque.numeric'               => 'O campo torque deve ser do tipo número',
-            'gearbox_id.required'          => 'O campo caixa de marchas é obrigatório',
             'gearbox_id.numeric'           => 'O campo caixa de marchas deve ser do tipo número',
-            'relation_first_gear.required' => 'O campo relação primeira marcha é obrigatório',
+            'owner_id.required'            => 'O campo proprietário é obrigatório',
+            'owner_id.numeric'             => 'O campo proprietário deve ser do tipo número',
             'relation_first_gear.numeric'  => 'O campo relação primeira marcha deve ser do tipo número',
-            'axle_differential.required'   => 'O campo relação diferencial é obrigatório',
             'axle_differential.numeric'    => 'O campo relação diferencial deve ser do tipo número',
+            'weight.numeric'               => 'O campo tara deve ser do tipo número',
+            'potency.numeric'              => 'O campo potência deve ser do tipo número',
+            'front_balance.numeric'        => 'O campo balanço dianteiro deve ser do tipo número',
+            'back_balance.numeric'         => 'O campo balanço traseiro deve ser do tipo número',
+            'between_axles_first.numeric'  => 'O campo balanço entre eixo 1 deve ser do tipo número',
+            'between_axles_second.numeric' => 'O campo balanço entre eixo 2 deve ser do tipo número',
+            'between_axles_third.numeric'  => 'O campo balanço entre eixo 3 deve ser do tipo número',
+            
         ];
     }
 }
