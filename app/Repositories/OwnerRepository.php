@@ -24,7 +24,6 @@ class OwnerRepository {
   public function show($id)
   {
     $owner = Owner::findOrFail($id);
-    $owner = $owner->first();
     return $owner;
   }
 

@@ -22,7 +22,6 @@ class VehicleRepository {
   public function show($id)
   {
     $vehicle = Vehicle::findOrFail($id);
-    $vehicle = $vehicle->first();
     return $vehicle;
   }
 

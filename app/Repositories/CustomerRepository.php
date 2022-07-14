@@ -22,7 +22,6 @@ class CustomerRepository {
   public function show($id)
   {
     $customer = Customer::findOrFail($id);
-    $customer = $customer->first();
     return $customer;
   }
 

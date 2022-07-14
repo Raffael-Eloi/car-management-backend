@@ -22,7 +22,6 @@ class GearBoxRepository {
   public function show($id)
   {
     $gearBox = GearBox::findOrFail($id);
-    $gearBox = $gearBox->first();
     return $gearBox;
   }
 
