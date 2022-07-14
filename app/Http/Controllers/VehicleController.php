@@ -14,7 +14,7 @@ class VehicleController extends Controller
     public function __construct(VehicleService $vehicleService) 
     {
         $this->vehicleService = $vehicleService;
-        // $this->middleware('auth:api');
+        $this->middleware('auth:api');
     }
 
     public function index()

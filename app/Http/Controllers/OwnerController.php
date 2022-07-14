@@ -12,7 +12,7 @@ class OwnerController extends Controller
 
     public function __construct(OwnerService $ownerService) {
         $this->ownerService = $ownerService;
-        // $this->middleware('auth:api');
+        $this->middleware('auth:api');
     }
 
     public function index()

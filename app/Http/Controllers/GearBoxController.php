@@ -12,7 +12,7 @@ class GearBoxController extends Controller
 
     public function __construct(GearBoxService $gearBoxService) {
         $this->gearBoxService = $gearBoxService;
-        // $this->middleware('auth:api');
+        $this->middleware('auth:api');
     }
 
     public function index()
