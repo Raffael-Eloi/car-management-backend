@@ -30,4 +30,8 @@ class Customer extends Model
         'social_contract',
         'contact',
     ];
+
+    public function vehicles() {
+        return $this->hasMany(Vehicle::class);
+    }
 }

@@ -7,6 +7,7 @@ class CustomerRepository {
   public function get()
   {
     $customers = new Customer();
+    $customers = $customers->with('vehicles');
     $customers = $customers->get();
     return $customers;
   }
