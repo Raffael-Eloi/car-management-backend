@@ -9,6 +9,7 @@ class VehicleRepository {
     $vehicles = new Vehicle();
     $vehicles = $vehicles->with('gearbox');
     $vehicles = $vehicles->with('owner');
+    $vehicles = $vehicles->with('customer');
     $vehicles = $vehicles->get();
     return $vehicles;
   }

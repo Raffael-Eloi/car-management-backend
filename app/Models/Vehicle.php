@@ -28,6 +28,7 @@ class Vehicle extends Model
         'torque',
         'gearbox_id',
         'owner_id',
+        'customer_id',
         'relation_first_gear',
         'axle_differential',
         'weight',
@@ -47,5 +48,10 @@ class Vehicle extends Model
     public function owner()
     {
         return $this->belongsTo(Owner::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }
