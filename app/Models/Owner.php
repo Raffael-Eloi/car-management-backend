@@ -44,4 +44,8 @@ class Owner extends Model
         'login_pe',
         'password_pe',
     ];
+
+    public function vehicles() {
+        return $this->hasMany(Vehicle::class);
+    }
 }

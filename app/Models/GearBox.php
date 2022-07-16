@@ -40,4 +40,8 @@ class GearBox extends Model
         'gear_15',
         'gear_16'
     ];
+
+    public function vehicles() {
+        return $this->hasMany(Vehicle::class, 'gearbox_id');
+    }
 }

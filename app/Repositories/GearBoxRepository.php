@@ -7,6 +7,7 @@ class GearBoxRepository {
   public function get()
   {
     $gearBoxes = new GearBox();
+    $gearBoxes = $gearBoxes->with('vehicles');
     $gearBoxes = $gearBoxes->get();
     return $gearBoxes;
   }

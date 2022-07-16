@@ -14,13 +14,6 @@ class Vehicle extends Model
     protected $table = 'vehicles';
 
     /**
-     * The relationships that should always be loaded.
-     *
-     * @var array
-     */
-    protected $with = ['gearbox', 'owner'];
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

@@ -8,6 +8,7 @@ class OwnerRepository {
   public function get()
   {
     $owners = new Owner();
+    $owners = $owners->with('vehicles');
     $owners = $owners->get();
     return $owners;
   }
