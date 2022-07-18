@@ -25,7 +25,7 @@ class VehicleStoreRequest extends FormRequest
     {
         return [
             'brand'                => 'required|string|min:4|max:255',
-            'model'                => 'required|string|min:4|max:255',
+            'model'                => 'required|string|min:3|max:255',
             'license_plate'        => 'required|string|min:4|max:255',
             'year_model'           => 'required|string|min:4|max:255',
             'color'                => 'required|string|min:4|max:255',
@@ -55,7 +55,7 @@ class VehicleStoreRequest extends FormRequest
             'brand.max'                    => 'O campo marca deve ter no máximo 255 caracteres',
             'model.required'               => 'O campo modelo é obrigatório',
             'model.string'                 => 'O campo modelo deve ser do tipo texto',
-            'model.min'                    => 'O campo modelo deve ter no mínimo 4 caracteres',
+            'model.min'                    => 'O campo modelo deve ter no mínimo 3 caracteres',
             'model.max'                    => 'O campo modelo deve ter no máximo 255 caracteres',
             'license_plate.required'       => 'O campo placa é obrigatório',
             'license_plate.string'         => 'O campo placa deve ser do tipo texto',

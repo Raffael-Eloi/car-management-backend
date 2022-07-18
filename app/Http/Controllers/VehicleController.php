@@ -17,9 +17,9 @@ class VehicleController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->vehicleService->getAllVehicles());
+        return response()->json($this->vehicleService->getVehiclesWithPaginate($request->all()));
     }
 
     public function store(VehicleStoreRequest $request) 

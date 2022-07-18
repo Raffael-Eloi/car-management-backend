@@ -4,13 +4,13 @@ namespace App\Repositories;
 use App\Models\Vehicle;
 
 class VehicleRepository {
-  public function get()
+  public function getPaginateFiltered($perPage = 10)
   {
     $vehicles = new Vehicle();
     $vehicles = $vehicles->with('gearbox');
     $vehicles = $vehicles->with('owner');
     $vehicles = $vehicles->with('customer');
-    $vehicles = $vehicles->get();
+    $vehicles = $vehicles->paginate($perPage);
     return $vehicles;
   }
 
