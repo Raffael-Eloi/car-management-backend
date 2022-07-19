@@ -12,9 +12,6 @@ class VehicleRepository {
     $vehicles = $vehicles->with('gearbox');
     $vehicles = $vehicles->with('owner');
     $vehicles = $vehicles->with('customer');
-    // dd($vehicles->get()); 
-    // dd($vehicles); 
-    
     $vehicles = $vehicles->paginate($perPage);
     return $vehicles;
   }
@@ -50,12 +47,20 @@ class VehicleRepository {
   protected function filterQuery($vehicles, $filter) 
   {
     return $vehicles->where(function ($query) use ($filter) {
-      // $query->where('brand', 'like', '%'.$filter['keywords'].'%');
-      // if ($filter['filterByAttribute'] == "true") {
-      //   if ($filter['attributeSearch'] == 'brand') {
-      //     $query->where('brand', 'like', '%'.$filter['keywords'].'%');
-      //   }
-      // }
+      if ($filter['filterByAttribute'] == "true") {
+        if ($filter['attributeSearch'] == 'license_plate') {
+          $query->where('license_plate', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'brand') {
+          $query->where('brand', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'model') {
+          $query->where('model', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'color') {
+          $query->where('color', 'like', '%'.$filter['keywords'].'%');
+        }
+      }
     });
   }
 }
