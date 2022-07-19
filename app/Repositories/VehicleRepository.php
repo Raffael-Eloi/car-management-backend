@@ -2,14 +2,19 @@
 namespace App\Repositories;
 
 use App\Models\Vehicle;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class VehicleRepository {
-  public function getPaginateFiltered($perPage = 10)
+  public function getPaginateFiltered($filter, $perPage = 10)
   {
     $vehicles = new Vehicle();
+    $vehicles = $this->filterQuery($vehicles, $filter);
     $vehicles = $vehicles->with('gearbox');
     $vehicles = $vehicles->with('owner');
     $vehicles = $vehicles->with('customer');
+    // dd($vehicles->get()); 
+    // dd($vehicles); 
+    
     $vehicles = $vehicles->paginate($perPage);
     return $vehicles;
   }
@@ -40,5 +45,17 @@ class VehicleRepository {
   {
     $vehicle = Vehicle::findOrFail($id);
     $vehicle->delete();
+  }
+
+  protected function filterQuery($vehicles, $filter) 
+  {
+    return $vehicles->where(function ($query) use ($filter) {
+      // $query->where('brand', 'like', '%'.$filter['keywords'].'%');
+      // if ($filter['filterByAttribute'] == "true") {
+      //   if ($filter['attributeSearch'] == 'brand') {
+      //     $query->where('brand', 'like', '%'.$filter['keywords'].'%');
+      //   }
+      // }
+    });
   }
 }

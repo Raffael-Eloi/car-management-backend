@@ -15,7 +15,7 @@ class VehicleService {
 
   public function getVehiclesWithPaginate($data)
   {
-    return $this->vehicleRepository->getPaginateFiltered($data['perPage']);
+    return $this->vehicleRepository->getPaginateFiltered($data, $data['perPage']);
   }
 
   public function storeVehicle($request)
