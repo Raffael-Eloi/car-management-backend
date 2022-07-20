@@ -5,11 +5,12 @@ use App\Models\Owner;
 
 class OwnerRepository {
   
-  public function get()
+  public function getPaginateFiltered($filter, $perPage = 10)
   {
     $owners = new Owner();
+    $owners = $this->filterQuery($owners, $filter);
     $owners = $owners->with('vehicles');
-    $owners = $owners->get();
+    $owners = $owners->paginate($perPage);
     return $owners;
   }
 
@@ -40,5 +41,25 @@ class OwnerRepository {
   {
     $owner = Owner::findOrFail($id);
     $owner->delete();
+  }
+
+  protected function filterQuery($owners, $filter) 
+  {
+    return $owners->where(function ($query) use ($filter) {
+      if ($filter['filterByAttribute'] == "true") {
+        if ($filter['attributeSearch'] == 'name') {
+          $query->where('name', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'document') {
+          $query->where('document', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'phone') {
+          $query->where('phone', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'email') {
+          $query->where('email', 'like', '%'.$filter['keywords'].'%');
+        }
+      }
+    });
   }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Owner\OwnerStoreRequest;
 use App\Http\Requests\Owner\OwnerUpdateRequest;
 use App\Services\OwnerService;
+use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
@@ -15,9 +16,9 @@ class OwnerController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->ownerService->getAllOwners());
+        return response()->json($this->ownerService->getOwnersWithPagination($request->all()));
     }
 
     public function store(OwnerStoreRequest $request)

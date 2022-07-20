@@ -13,9 +13,9 @@ class OwnerService {
     $this->ownerRepository = $ownerRepository;
   }
 
-  public function getAllOwners() 
+  public function getOwnersWithPagination($data) 
   {
-    return $this->ownerRepository->get();
+    return $this->ownerRepository->getPaginateFiltered($data, $data['perPage']);
   }
 
   public function storeOwner($request)
