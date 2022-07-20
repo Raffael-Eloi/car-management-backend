@@ -4,11 +4,12 @@ namespace App\Repositories;
 use App\Models\Customer;
 
 class CustomerRepository {
-  public function get()
+  public function getPaginateFiltered($filter, $perPage = 10)
   {
     $customers = new Customer();
+    $customers = $this->filterQuery($customers, $filter);
     $customers = $customers->with('vehicles');
-    $customers = $customers->get();
+    $customers = $customers->paginate($perPage);
     return $customers;
   }
 
@@ -38,5 +39,25 @@ class CustomerRepository {
   {
     $customer = Customer::findOrFail($id);
     $customer->delete();
+  }
+
+  protected function filterQuery($customers, $filter) 
+  {
+    return $customers->where(function ($query) use ($filter) {
+      if ($filter['filterByAttribute'] == "true") {
+        if ($filter['attributeSearch'] == 'name') {
+          $query->where('name', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'document') {
+          $query->where('document', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'phone') {
+          $query->where('phone', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'email') {
+          $query->where('email', 'like', '%'.$filter['keywords'].'%');
+        }
+      }
+    });
   }
 }

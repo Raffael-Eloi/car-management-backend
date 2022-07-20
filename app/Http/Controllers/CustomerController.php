@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Customer\CustomerStoreRequest;
 use App\Http\Requests\Customer\CustomerUpdateRequest;
 use App\Services\CustomerService;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -15,9 +16,9 @@ class CustomerController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->customerService->getAllCustomers());
+        return response()->json($this->customerService->getCustomersWithPagination($request->all()));
     }
 
     public function store(CustomerStoreRequest $request)

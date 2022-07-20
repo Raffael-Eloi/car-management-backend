@@ -13,9 +13,9 @@ class CustomerService {
     $this->customerRepository = $customerRepository;
   }
 
-  public function getAllCustomers() 
+  public function getCustomersWithPagination($data) 
   {
-    return $this->customerRepository->get();
+    return $this->customerRepository->getPaginateFiltered($data, $data['perPage']);
   }
 
   public function storeCustomer($request)
