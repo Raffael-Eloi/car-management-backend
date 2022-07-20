@@ -19,7 +19,7 @@ class VehicleController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json($this->vehicleService->getVehiclesWithPaginate($request->all()));
+        return response()->json($this->vehicleService->getVehiclesWithPagination($request->all()));
     }
 
     public function store(VehicleStoreRequest $request) 

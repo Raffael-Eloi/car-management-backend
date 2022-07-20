@@ -5,9 +5,12 @@ use App\Models\User;
 
 class UserRepository {
   
-  public function get()
+  public function getPaginateFiltered($filter, $perPage = 10)
   {
-    return User::where('active', true)->get();
+    $users = User::where('active', true);
+    $users = $this->filterQuery($users, $filter);
+    $users = $users->paginate($perPage);
+    return $users;
   }
 
   public function create($data)
@@ -45,5 +48,25 @@ class UserRepository {
     $user = User::findOrFail($id);
     $user->active = false;
     $user->save();
+  }
+
+  protected function filterQuery($users, $filter) 
+  {
+    return $users->where(function ($query) use ($filter) {
+      if ($filter['filterByAttribute'] == "true") {
+        if ($filter['attributeSearch'] == 'name') {
+          $query->where('name', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'document') {
+          $query->where('document', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'phone') {
+          $query->where('phone', 'like', '%'.$filter['keywords'].'%');
+        }
+        if ($filter['attributeSearch'] == 'email') {
+          $query->where('email', 'like', '%'.$filter['keywords'].'%');
+        }
+      }
+    });
   }
 }

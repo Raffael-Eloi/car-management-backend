@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Services\UserService;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -16,9 +17,9 @@ class UserController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->userService->getAllUsers());
+        return response()->json($this->userService->getUsersWithPagination($request->all()));
     }
 
     public function store(UserStoreRequest $request)

@@ -13,9 +13,9 @@ class UserService {
     $this->userRepository = $userRepository;
   }
 
-  public function getAllUsers() 
+  public function getUsersWithPagination($data) 
   {
-    return $this->userRepository->get();
+    return $this->userRepository->getPaginateFiltered($data, $data['perPage']);
   }
 
   public function storeUser($request)
