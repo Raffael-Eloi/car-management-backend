@@ -12,9 +12,9 @@ class GearBoxService {
     $this->gearBoxRepository = $gearBoxRepository;
   }
 
-  public function getAllGearBoxes()
+  public function getGearBoxesPagination($data)
   {
-    return $this->gearBoxRepository->get();
+    return $this->gearBoxRepository->getPaginateFiltered($data, $data['perPage']);
   }
 
   public function storeGearBox($request)

@@ -4,11 +4,12 @@ namespace App\Repositories;
 use App\Models\GearBox;
 
 class GearBoxRepository {
-  public function get()
+  public function getPaginateFiltered($filter, $perPage = 10)
   {
     $gearBoxes = new GearBox();
+    $gearBoxes = $this->filterQuery($gearBoxes, $filter);
     $gearBoxes = $gearBoxes->with('vehicles');
-    $gearBoxes = $gearBoxes->get();
+    $gearBoxes = $gearBoxes->paginate($perPage);
     return $gearBoxes;
   }
 
@@ -38,5 +39,16 @@ class GearBoxRepository {
   {
     $gearBox = GearBox::findOrFail($id);
     $gearBox->delete();
+  }
+
+  protected function filterQuery($gearBoxes, $filter) 
+  {
+    return $gearBoxes->where(function ($query) use ($filter) {
+      if ($filter['filterByAttribute'] == "true") {
+        if ($filter['attributeSearch'] == 'name') {
+          $query->where('name', 'like', '%'.$filter['keywords'].'%');
+        }
+      }
+    });
   }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GearBox\GearBoxStoreRequest;
 use App\Http\Requests\GearBox\GearBoxUpdateRequest;
 use App\Services\GearBoxService;
+use Illuminate\Http\Request;
 
 class GearBoxController extends Controller
 {
@@ -15,9 +16,9 @@ class GearBoxController extends Controller
         $this->middleware('auth:api');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->gearBoxService->getAllGearBoxes());
+        return response()->json($this->gearBoxService->getGearBoxesPagination($request->all()));
     }
 
     public function store(GearBoxStoreRequest $request)
